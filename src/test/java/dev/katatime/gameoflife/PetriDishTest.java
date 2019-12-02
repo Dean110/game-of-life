@@ -19,11 +19,14 @@ public class PetriDishTest {
     }
 
     @Test
-    public void threeByThreeShouldHaveThreeRowsOfThreeColumnsOfCells() {
+    public void checkStatusReturnsTheStatusOfEachCellInThePetriDishAndThrowsExceptionsIfOutOfBounds() {
         assertAll(
                 () -> assertThat(underTest.checkStatus(0, 0)).isEqualTo(DEAD),
                 () -> assertPetriDishException(3, 0, "The dish is not that big."),
-                () -> assertPetriDishException(0, 3, "The dish is not that big.")
+                () -> assertPetriDishException(0, 3, "The dish is not that big."),
+                () -> assertPetriDishException(-1, 0, "This location is invalid."),
+                () -> assertPetriDishException(0, -1, "This location is invalid."),
+                () -> assertPetriDishException(-1, -1, "This location is invalid.")
         );
 
     }

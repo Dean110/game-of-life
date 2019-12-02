@@ -24,10 +24,21 @@ public class PetriDish {
     }
 
     public Status checkStatus(int row, int column) {
-        if(row>=cells.size()||column>=cells.get(0).size()){
+        if(isOutsideOfPetriDish(row, column)){
             throw new OutsideOfPetriDIshException("The dish is not that big.");
         }
+        if(isAnInvalidLocation(row, column)){
+            throw new OutsideOfPetriDIshException("This location is invalid.");
+        }
         return Status.DEAD;
+    }
+
+    private boolean isAnInvalidLocation(int row, int column) {
+        return row<0|| column<0;
+    }
+
+    private boolean isOutsideOfPetriDish(int row, int column) {
+        return row>=cells.size()||column>=cells.get(0).size();
     }
 
 
