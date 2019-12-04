@@ -1,4 +1,4 @@
 package dev.katatime.gameoflife;
 
-public class Cell {
+public class GameOfLifePrinter {
 }
